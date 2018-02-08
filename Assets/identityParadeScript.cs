@@ -228,6 +228,10 @@ public class identityParadeScript : MonoBehaviour
         }
     }
 
+#pragma warning disable 414
+    private string TwitchHelpMessage = "Cycle with !{0} cycle hair/build/attire/suspect. Use !{0} convict H B A S to submit a solution, where H B A S must be a valid hair, build, attire, and suspect. Unambiguous abbreviations are allowed (e.g. use “tank” instead of “tank top”). Invalid submissions incur a penalty.";
+#pragma warning restore 414
+
     private IEnumerator ProcessTwitchCommand(string command)
     {
         var split = command.ToLowerInvariant().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
@@ -261,7 +265,7 @@ public class identityParadeScript : MonoBehaviour
             yield break;
         }
 
-        if (split.Length == 5 && (split[0] == "set" || split[0] == "submit"))
+        if (split.Length == 5 && split[0] == "submit")
         {
             for (int i = 0; i < hairEntries.Count; i++)
             {
@@ -312,8 +316,7 @@ public class identityParadeScript : MonoBehaviour
 
             suspectFound:
             yield return new WaitForSeconds(.1f);
-            if (split[0] == "submit")
-                convictBut.OnInteract();
+            convictBut.OnInteract();
         }
     }
 
