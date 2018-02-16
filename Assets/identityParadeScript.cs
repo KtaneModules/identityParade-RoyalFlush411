@@ -229,7 +229,7 @@ public class identityParadeScript : MonoBehaviour
     }
 
 #pragma warning disable 414
-    private string TwitchHelpMessage = "Cycle with !{0} cycle hair/build/attire/suspect. Use !{0} convict H B A S to submit a solution, where H B A S must be a valid hair, build, attire, and suspect. Unambiguous abbreviations are allowed (e.g. use “tank” instead of “tank top”). Invalid submissions incur a penalty.";
+    private string TwitchHelpMessage = "Cycle with “!{0} cycle hair/build/attire/suspect”. Use “!{0} convict H B A S” to submit a solution, where H B A S must be a valid hair, build, attire, and suspect. Unambiguous abbreviations are allowed (e.g. use “tank” instead of “tank top”). Invalid submissions incur a penalty.";
 #pragma warning restore 414
 
     private IEnumerator ProcessTwitchCommand(string command)
@@ -265,7 +265,7 @@ public class identityParadeScript : MonoBehaviour
             yield break;
         }
 
-        if (split.Length == 5 && split[0] == "submit")
+        if (split.Length == 5 && new[] { "convict", "submit" }.Contains(split[0]))
         {
             for (int i = 0; i < hairEntries.Count; i++)
             {
@@ -687,4 +687,5 @@ public class identityParadeScript : MonoBehaviour
         attireAnswer = "Jumper";
         suspectAnswer = "Rhiannon";
     }
+
 }
