@@ -229,39 +229,50 @@ public class identityParadeScript : MonoBehaviour
     }
 
 #pragma warning disable 414
-    private string TwitchHelpMessage = "Cycle with “!{0} cycle hair/build/attire/suspect”. Use “!{0} convict H B A S” to submit a solution, where H B A S must be a valid hair, build, attire, and suspect. Unambiguous abbreviations are allowed (e.g. use “tank” instead of “tank top”). Invalid submissions incur a penalty.";
+    private string TwitchHelpMessage = "Cycle with “!{0} cycle hair/build/attire/suspect/all”. Use “!{0} convict H B A S” to submit a solution, where H B A S must be a valid hair, build, attire, and suspect (in that order). Unambiguous abbreviations are allowed (e.g. use “tank” instead of “tank top”). Invalid submissions incur a penalty.";
 #pragma warning restore 414
 
     private IEnumerator ProcessTwitchCommand(string command)
     {
         var split = command.ToLowerInvariant().Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
+        if (split.Length == 2 && split[0] == "cycle")
+        {
+            var cycleHair = new { NumCycles = hairEntries.Count, RightButton = hairRight };
+            var cycleBuild = new { NumCycles = buildEntries.Count, RightButton = buildRight };
+            var cycleAttire = new { NumCycles = attireEntries.Count, RightButton = attireRight };
+            var cycleSuspects = new { NumCycles = suspectEntries.Count, RightButton = suspectRight };
+
+            var cycleWhat =
+                split[1] == "hair" || split[1] == "hairs" ? new[] { cycleHair } :
+                split[1] == "build" || split[1] == "builds" ? new[] { cycleBuild } :
+                split[1] == "attire" || split[1] == "attires" ? new[] { cycleAttire } :
+                split[1] == "suspect" || split[1] == "suspects" || split[1] == "people" ? new[] { cycleSuspects } :
+                split[1] == "all" || split[1] == "everything" ? new[] { cycleHair, cycleBuild, cycleAttire, cycleSuspects } :
+                null;
+
+            if (cycleWhat == null)
+                yield break;
+
+            for (int i = 0; i < cycleWhat.Length; i++)
+            {
+                if (i != 0)
+                    yield return new WaitForSeconds(.5f);
+                for (int j = 0; j < cycleWhat[i].NumCycles; j++)
+                {
+                    yield return "trycancel";
+                    yield return new WaitForSeconds(1f);
+                    cycleWhat[i].RightButton.OnInteract();
+                }
+            }
+            yield break;
+        }
+
         if (split.Length == 1 && new[] { "convict", "submit" }.Contains(split[0]))
         {
             yield return new WaitForSeconds(.1f);
             convictBut.OnInteract();
             yield return new WaitForSeconds(.1f);
-            yield break;
-        }
-
-        if (split.Length == 2 && split[0] == "cycle")
-        {
-            int numCycles;
-            KMSelectable rightButton;
-            switch (split[1])
-            {
-                case "hair": case "hairs": numCycles = hairEntries.Count; rightButton = hairRight; break;
-                case "build": case "builds": numCycles = buildEntries.Count; rightButton = buildRight; break;
-                case "attire": case "attires": numCycles = attireEntries.Count; rightButton = attireRight; break;
-                case "suspect": case "suspects": case "people": numCycles = suspectEntries.Count; rightButton = suspectRight; break;
-                default: yield break;
-            }
-            for (int i = 0; i < numCycles; i++)
-            {
-                yield return "trycancel";
-                yield return new WaitForSeconds(1f);
-                rightButton.OnInteract();
-            }
             yield break;
         }
 
@@ -687,5 +698,4 @@ public class identityParadeScript : MonoBehaviour
         attireAnswer = "Jumper";
         suspectAnswer = "Rhiannon";
     }
-
 }
