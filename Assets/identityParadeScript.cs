@@ -261,7 +261,7 @@ public class identityParadeScript : MonoBehaviour
                 for (int j = 0; j < cycleWhat[i].NumCycles; j++)
                 {
                     yield return "trycancel";
-                    yield return new WaitForSeconds(1f);
+                    yield return new WaitForSeconds(1.5f);
                     cycleWhat[i].RightButton.OnInteract();
                 }
             }
