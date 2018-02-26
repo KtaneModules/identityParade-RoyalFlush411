@@ -147,46 +147,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 102026363357625450, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_Color.rgba
-      value: 4278255374
-      objectReference: {fileID: 0}
-    - target: {fileID: 102711585208307020, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_Color.rgba
-      value: 4278255374
-      objectReference: {fileID: 0}
-    - target: {fileID: 102108564270132790, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_Color.rgba
-      value: 4278255374
-      objectReference: {fileID: 0}
-    - target: {fileID: 102614180025724300, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_Color.rgba
-      value: 4278255374
-      objectReference: {fileID: 0}
-    - target: {fileID: 102711585208307020, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 102614180025724300, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 102026363357625450, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 102108564270132790, guid: e90f6c801ea044648aa694f4a5987ede,
-        type: 2}
-      propertyPath: m_FontStyle
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e90f6c801ea044648aa694f4a5987ede, type: 2}
   m_IsPrefabParent: 0
