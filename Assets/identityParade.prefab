@@ -2381,12 +2381,12 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 36
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 9cd70f4b3b5054aa18fa52b521d99786, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4280397353
+    rgba: 4278255374
 --- !u!102 &102108564270132790
 TextMesh:
   serializedVersion: 3
@@ -2402,12 +2402,12 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 36
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 9cd70f4b3b5054aa18fa52b521d99786, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4280397353
+    rgba: 4278255374
 --- !u!102 &102132162446572596
 TextMesh:
   serializedVersion: 3
@@ -2549,12 +2549,12 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 36
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 9cd70f4b3b5054aa18fa52b521d99786, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4280397353
+    rgba: 4278255374
 --- !u!102 &102628794167099458
 TextMesh:
   serializedVersion: 3
@@ -2591,12 +2591,12 @@ TextMesh:
   m_Alignment: 1
   m_TabSize: 4
   m_FontSize: 36
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 9cd70f4b3b5054aa18fa52b521d99786, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4280397353
+    rgba: 4278255374
 --- !u!102 &102713658567770458
 TextMesh:
   serializedVersion: 3
