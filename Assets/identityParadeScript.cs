@@ -229,7 +229,7 @@ public class identityParadeScript : MonoBehaviour
     }
 
 #pragma warning disable 414
-    private string TwitchHelpMessage = "Cycle with “!{0} cycle hair/build/attire/suspect/all”. Use “!{0} convict H B A S” to submit a solution, where H B A S must be a valid hair, build, attire, and suspect (in that order). Unambiguous abbreviations are allowed (e.g. use “tank” instead of “tank top”). Invalid submissions incur a penalty.";
+    private string TwitchHelpMessage = "Cycle with “!{0} cycle hair/build/attire/suspect/all”. Use “!{0} convict H B A S” to submit a solution, where H B A S must be a valid hair, build, attire, and suspect (in that order). Abbreviations must be the start of the word (e.g. use “tank” instead of “tank top”; “shirt” won’t work for “T-shirt”). Invalid submissions incur a penalty.";
 #pragma warning restore 414
 
     private IEnumerator ProcessTwitchCommand(string command)
@@ -280,48 +280,48 @@ public class identityParadeScript : MonoBehaviour
         {
             for (int i = 0; i < hairEntries.Count; i++)
             {
-                if (hairEntries[hairIndex].IndexOf(split[1], StringComparison.InvariantCultureIgnoreCase) != -1)
+                if (hairEntries[hairIndex].StartsWith(split[1], StringComparison.InvariantCultureIgnoreCase))
                     goto hairFound;
                 yield return new WaitForSeconds(.1f);
                 hairRight.OnInteract();
             }
-            yield return string.Format("sendtochat I don’t recognise {0} as a hair colour.", split[1]);
+            yield return string.Format("sendtochat I don’t recognise {0} as a hair colour. Remember that if you abbreviate it, it has to start with it (e.g. “ack” won’t work for “Black”).", split[1]);
             yield return "unsubmittablepenalty";
             yield break;
 
             hairFound:
             for (int i = 0; i < buildEntries.Count; i++)
             {
-                if (buildEntries[buildIndex].IndexOf(split[2], StringComparison.InvariantCultureIgnoreCase) != -1)
+                if (buildEntries[buildIndex].StartsWith(split[2], StringComparison.InvariantCultureIgnoreCase))
                     goto buildFound;
                 yield return new WaitForSeconds(.1f);
                 buildRight.OnInteract();
             }
-            yield return string.Format("sendtochat I don’t recognise {0} as a build.", split[2]);
+            yield return string.Format("sendtochat I don’t recognise {0} as a build. Remember that if you abbreviate it, it has to start with it (e.g. “ched” won’t work for “Hunched”).", split[2]);
             yield return "unsubmittablepenalty";
             yield break;
 
             buildFound:
             for (int i = 0; i < attireEntries.Count; i++)
             {
-                if (attireEntries[attireIndex].IndexOf(split[3], StringComparison.InvariantCultureIgnoreCase) != -1)
+                if (attireEntries[attireIndex].StartsWith(split[3], StringComparison.InvariantCultureIgnoreCase))
                     goto attireFound;
                 yield return new WaitForSeconds(.1f);
                 attireRight.OnInteract();
             }
-            yield return string.Format("sendtochat I don’t recognise {0} as an attire.", split[3]);
+            yield return string.Format("sendtochat I don’t recognise {0} as an attire. Remember that if you abbreviate it, it has to start with it (e.g. “shirt” won’t work for “T-shirt”).", split[3]);
             yield return "unsubmittablepenalty";
             yield break;
 
             attireFound:
             for (int i = 0; i < suspectEntries.Count; i++)
             {
-                if (suspectEntries[suspectIndex].IndexOf(split[4], StringComparison.InvariantCultureIgnoreCase) != -1)
+                if (suspectEntries[suspectIndex].StartsWith(split[4], StringComparison.InvariantCultureIgnoreCase))
                     goto suspectFound;
                 yield return new WaitForSeconds(.1f);
                 suspectRight.OnInteract();
             }
-            yield return string.Format("sendtochat I don’t recognise {0} as a suspect.", split[4]);
+            yield return string.Format("sendtochat I don’t recognise {0} as a suspect. Remember that if you abbreviate it, it has to start with it (e.g. “leigh” won’t work for “Kayleigh”).", split[4]);
             yield return "unsubmittablepenalty";
             yield break;
 
